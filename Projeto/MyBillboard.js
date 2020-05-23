@@ -34,6 +34,14 @@ class MyBillboard extends CGFobject{
         this.boardTexture.loadTexture('images/billboard.png');
         this.boardTexture.setTextureWrap('REPEAT', 'REPEAT');
 
+        this.boardTexture2 = new CGFappearance(this.scene);
+        this.boardTexture2.setAmbient(0.1, 0.1, 0.1, 1);
+        this.boardTexture2.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.boardTexture2.setSpecular(0.1, 0.1, 0.1, 1);
+        this.boardTexture2.setShininess(10.0);
+        this.boardTexture2.loadTexture('images/billboardBack.png');
+        this.boardTexture2.setTextureWrap('REPEAT', 'REPEAT');
+
         this.supportTexture = new CGFappearance(this.scene);
         this.supportTexture.setAmbient(0.1, 0.1, 0.1, 1);
         this.supportTexture.setDiffuse(0.1, 0.1, 0.1, 1);
@@ -77,21 +85,29 @@ class MyBillboard extends CGFobject{
         this.scene.translate(-0.7, -1, 0);
         this.scene.scale(0.1, 1, 1);
         this.support.display();
+        this.scene.rotate(Math.PI,0, 1, 0)
+        this.support.display()
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
         this.scene.translate(0.7, -1, 0);
         this.scene.scale(0.1, 1, 1);
         this.support.display();
+        this.scene.rotate(Math.PI,0, 1, 0)
+        this.support.display()
         this.scene.popMatrix();
     }
 
     displayBoard() {
+
         this.scene.translate(-2, 1.5, 0);
         this.scene.rotate(Math.PI / 3.0, 0, 1, 0);
         this.boardTexture.apply();
         this.scene.pushMatrix();
         this.scene.scale(2, 1, 1);
+        this.board.display();
+        this.boardTexture2.apply()
+        this.scene.rotate(Math.PI,0, 1, 0)
         this.board.display();
         this.scene.popMatrix();
     }
